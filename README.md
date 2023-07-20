@@ -13,6 +13,8 @@ A simplified Pytorch implement of "DeepInspect: A Black-box Trojan Detection and
 
 We make backdoored models with Backdoor Toolbox by vtu81. I modified this repository to support MNIST dataset. My Backdoor Toolbox code link is https://github.com/123000001212/backdoor-toolbox. The offical Backdoor Toolbox code link is https://github.com/vtu81/backdoor-toolbox.
 
+We offer trained bakcdoor models on MNIST and GTSRB dataset with BadNet attack in "backdoor_models/" folder.
+
 ## Running the Code
 
 Remember to put trained backdoor models to "backdoor_models/" before running.
