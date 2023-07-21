@@ -1,7 +1,7 @@
 # DeepInspect
 A simplified Pytorch implement of "DeepInspect: A Black-box Trojan Detection and Mitigation Framework for Deep Neural Networks, IJCAI 2019".  
 
-The paper propose four main steps: Model Inversion, Trigger Generation, Anomaly Detection and Model Patching to detect and mitigate backdoor attacks. In this repository, we implement Trigger Generation and Model Patching process to mitigate backdoor attacks, leaving Model Inversion and Anomaly Detection to oracle. Besides, I remove $L_{GAN}$ because I don't know what $D\_{prob}$ is when D is a fixed pre-trained model. 
+The paper propose four main steps: Model Inversion, Trigger Generation, Anomaly Detection and Model Patching to detect and mitigate backdoor attacks. In this repository, we implement Trigger Generation and Model Patching process to mitigate backdoor attacks, leaving Model Inversion and Anomaly Detection to oracle. Besides, I remove $L_{GAN}$ because I don't know what $D\_{prob}$ is when $D$ is a fixed pre-trained model. 
 
 ## Environment Setups
 
