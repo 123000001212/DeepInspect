@@ -12,7 +12,7 @@ from torch.utils.data import Subset
 from torch.utils.data.dataloader import DataLoader
 from models import Generator, ResNet18
 from utils import one_hot, test_gen_backdoor, test, test_backdoor
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-dataset', type=str, required=False, default='gtsrb',
