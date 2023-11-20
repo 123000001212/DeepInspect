@@ -1,3 +1,4 @@
+---Trigger Generation---
 Epoch-0: Loss=241.993, L_trigger=-9.012, L_pert=1255.027, ASR=95.4%
 Epoch-1: Loss=2.951, L_trigger=-51.884, L_pert=274.176, ASR=100.0%
 Epoch-2: Loss=-45.112, L_trigger=-99.625, L_pert=272.561, ASR=100.0%
@@ -28,6 +29,7 @@ Epoch-26: Loss=-81.899, L_trigger=-128.728, L_pert=234.143, ASR=100.0%
 Epoch-27: Loss=-81.916, L_trigger=-128.756, L_pert=234.202, ASR=100.0%
 Epoch-28: Loss=-82.035, L_trigger=-128.808, L_pert=233.863, ASR=100.0%
 Epoch-29: Loss=-82.135, L_trigger=-128.842, L_pert=233.537, ASR=100.0%
+---Model Patching---
 Before Cleanse. Clean Acc:96.56%, ASR:99.13%
 Epoch-0. Clean Acc:87.65%, ASR:0.67%
 Epoch-1. Clean Acc:92.3%, ASR:0.0%
