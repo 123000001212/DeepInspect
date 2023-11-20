@@ -12,29 +12,24 @@ from torch.utils.data import Subset
 from torch.utils.data.dataloader import DataLoader
 from models import Generator, ResNet18
 from utils import one_hot, test_gen_backdoor, test, test_backdoor
-# os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-dataset', type=str, required=False, default='gtsrb',
                     choices=['mnist','gtsrb'])
-parser.add_argument('-clean_budget', type=int, default=2000)
+parser.add_argument('-clean_budget', type=int, default=2000) # by defaut :  we assume 2000 clean samples for defensive purpose
 parser.add_argument('-threshold', type=int, default=10)
 parser.add_argument('-train_gen_epoch', type=int, default=30)
 parser.add_argument('-gamma2', type=float, default=0.2)
 parser.add_argument('-patch_rate', type=float, default=0.15)
-# by defaut :  we assume 2000 clean samples for defensive purpose
 args = parser.parse_args()
 
-device='cuda'
+device='cuda' # for GPU only
 
+# Initialize Datasets
+# train_set/test_set: The train/test split of the dataset.
+# source_class/target_class: A backdoor attack makes the model classify trigger-patched images from {source_class} to {target_class}.
+# source_loader: Loader of samples from source_class to be patched.
 
-
-""" gen=Generator()
-c=torch.tensor([[1.,0.,0.,0.,0.,0.,0.,0.,0.,0.],[1.,0.,0.,0.,0.,0.,0.,0.,0.,0.]])
-noise=torch.randn((2,100))
-pic=gen(c,noise)
-print(pic.shape)
-a=1 """
 if args.dataset=='mnist':
     source_class=1
     target_class=0
@@ -42,7 +37,6 @@ if args.dataset=='mnist':
             transforms.Resize((32,32)),
             transforms.ToTensor(),
             transforms.Lambda(lambda x: torch.cat((x, x, x), dim=0)),
-            #transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5)),
         ])
     train_set=MNIST(root='/home/data',train=True,transform=data_transform)
     test_set=MNIST(root='/home/data',train=False,transform=data_transform)
@@ -68,15 +62,18 @@ elif args.dataset=='gtsrb':
 else:
     raise(NotImplementedError('Dataset not supported.'))
 
+# we assume the defender can get {clean_budget} clean samples.
 indices=np.random.choice(len(train_set), args.clean_budget, replace=False)
 dataset=Subset(train_set,indices)
 dataloader=DataLoader(dataset, batch_size=32, shuffle=True)
 
+# Load Backdoored Model
 model=ResNet18(num_classes=10 if args.dataset=='mnist' else 43)
 model.load_state_dict(torch.load(f'backdoor_models/{args.dataset}-badnet.pt'))
 model.eval()
 model=model.to(device)
 
+# Trigger Generation
 gen=Generator().to(device)
 optimizer = torch.optim.Adam(gen.parameters(), lr=1e-4)
 
@@ -113,7 +110,7 @@ for epoch in range(args.train_gen_epoch):
     bdacc=test_gen_backdoor(gen,model,source_loader,target_class,device)
     print(f'Epoch-{epoch}: Loss={round(Loss_sum/count_sum,3)}, L_trigger={round(L_trigger_sum/count_sum,3)}, L_pert={round(L_pert_sum/count_sum,3)}, ASR={round(bdacc*100,2)}%')
 
-# PATCH MODEL
+# Model Patching
 gen.eval()
 label=torch.ones((int(args.patch_rate*args.clean_budget)),dtype=torch.int64)*target_class
 one_hot_label=one_hot(label).to(device)
@@ -124,14 +121,13 @@ patched_dataset=[]
 for i,(img,label) in enumerate(dataset):
     if i<int(args.patch_rate*args.clean_budget):
         img=img+G_out[i]
-        #img=img
     patched_dataset.append((img,label))
 
 patched_loader=DataLoader(patched_dataset,batch_size=128,shuffle=True)
 optimizer=torch.optim.SGD(model.parameters(),lr=0.01,momentum=0.9,weight_decay=1e-4)
 criterion=nn.CrossEntropyLoss()
 
-# real backdoor trigger
+# load real backdoor trigger
 totensor=transforms.ToTensor()
 trigger = Image.open('triggers/badnet_patch_32.png').convert("RGB")
 trigger = totensor(trigger)
@@ -145,10 +141,13 @@ for img,label1 in source_set:
     patched_source_set.append((img,target_class))
 patched_source_loader=DataLoader(patched_source_set,batch_size=1000,shuffle=False)
 
+# test Clean Acc and ASR before cleanse
 clean_acc=test(model,test_set,device)
 bd_acc=test_backdoor(model,patched_source_loader,device)
 print(f'Before Cleanse. Clean Acc:{round(clean_acc*100,2)}%, ASR:{round(bd_acc*100,2)}%')
+before_asr=bd_acc
 
+# cleanse for 10 epochs
 for epoch in range(10):
     model.train()
     for i,(img,label) in enumerate(patched_loader):
@@ -161,3 +160,4 @@ for epoch in range(10):
     clean_acc=test(model,test_set,device)
     bd_acc=test_backdoor(model,patched_source_loader,device)
     print(f'Epoch-{epoch}. Clean Acc:{round(clean_acc*100,2)}%, ASR:{round(bd_acc*100,2)}%')
+print(f'After Cleanse. Clean Acc:{round(clean_acc*100,2)}%, ASR:{round(bd_acc*100,2)}%, Backdoor(Watermark) Removal Rate:{round((before_asr-bd_acc)*100,2)}%.')

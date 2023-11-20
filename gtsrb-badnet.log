@@ -1,42 +1,42 @@
-(pytorch_1.13) zcy@user:~/DeepInspect$ python main.py -clean_budget=5000
-Epoch-0: Loss=229.794, L_trigger=-5.091, L_pert=1174.427, ASR=89.07%
-Epoch-1: Loss=11.934, L_trigger=-22.191, L_pert=170.627, ASR=97.0%
-Epoch-2: Loss=-21.59, L_trigger=-54.485, L_pert=164.475, ASR=100.0%
-Epoch-3: Loss=-48.723, L_trigger=-87.849, L_pert=195.631, ASR=100.0%
-Epoch-4: Loss=-60.905, L_trigger=-102.735, L_pert=209.147, ASR=100.0%
-Epoch-5: Loss=-67.054, L_trigger=-111.182, L_pert=220.64, ASR=100.0%
-Epoch-6: Loss=-71.828, L_trigger=-117.994, L_pert=230.833, ASR=100.0%
-Epoch-7: Loss=-74.27, L_trigger=-120.918, L_pert=233.24, ASR=100.0%
-Epoch-8: Loss=-75.792, L_trigger=-122.323, L_pert=232.655, ASR=100.0%
-Epoch-9: Loss=-76.789, L_trigger=-123.112, L_pert=231.617, ASR=100.0%
-Epoch-10: Loss=-77.546, L_trigger=-123.629, L_pert=230.419, ASR=100.0%
-Epoch-11: Loss=-78.07, L_trigger=-124.055, L_pert=229.925, ASR=100.0%
-Epoch-12: Loss=-78.596, L_trigger=-124.344, L_pert=228.742, ASR=100.0%
-Epoch-13: Loss=-78.903, L_trigger=-124.616, L_pert=228.566, ASR=100.0%
-Epoch-14: Loss=-79.216, L_trigger=-124.835, L_pert=228.095, ASR=100.0%
-Epoch-15: Loss=-79.399, L_trigger=-125.077, L_pert=228.389, ASR=100.0%
-Epoch-16: Loss=-79.689, L_trigger=-125.255, L_pert=227.829, ASR=100.0%
-Epoch-17: Loss=-79.87, L_trigger=-125.377, L_pert=227.535, ASR=100.0%
-Epoch-18: Loss=-79.995, L_trigger=-125.506, L_pert=227.557, ASR=100.0%
-Epoch-19: Loss=-80.228, L_trigger=-125.604, L_pert=226.881, ASR=100.0%
-Epoch-20: Loss=-80.292, L_trigger=-125.665, L_pert=226.862, ASR=100.0%
-Epoch-21: Loss=-80.454, L_trigger=-125.727, L_pert=226.365, ASR=100.0%
-Epoch-22: Loss=-80.582, L_trigger=-125.795, L_pert=226.068, ASR=100.0%
-Epoch-23: Loss=-80.67, L_trigger=-125.87, L_pert=226.001, ASR=100.0%
-Epoch-24: Loss=-80.706, L_trigger=-125.94, L_pert=226.167, ASR=100.0%
-Epoch-25: Loss=-80.794, L_trigger=-125.99, L_pert=225.98, ASR=100.0%
-Epoch-26: Loss=-80.833, L_trigger=-125.997, L_pert=225.817, ASR=100.0%
-Epoch-27: Loss=-81.002, L_trigger=-126.095, L_pert=225.465, ASR=100.0%
-Epoch-28: Loss=-81.046, L_trigger=-126.15, L_pert=225.518, ASR=100.0%
-Epoch-29: Loss=-81.111, L_trigger=-126.193, L_pert=225.41, ASR=100.0%
+Epoch-0: Loss=241.993, L_trigger=-9.012, L_pert=1255.027, ASR=95.4%
+Epoch-1: Loss=2.951, L_trigger=-51.884, L_pert=274.176, ASR=100.0%
+Epoch-2: Loss=-45.112, L_trigger=-99.625, L_pert=272.561, ASR=100.0%
+Epoch-3: Loss=-62.138, L_trigger=-114.972, L_pert=264.17, ASR=100.0%
+Epoch-4: Loss=-68.842, L_trigger=-120.013, L_pert=255.856, ASR=100.0%
+Epoch-5: Loss=-72.475, L_trigger=-122.412, L_pert=249.686, ASR=100.0%
+Epoch-6: Loss=-74.657, L_trigger=-123.751, L_pert=245.47, ASR=100.0%
+Epoch-7: Loss=-76.06, L_trigger=-124.72, L_pert=243.301, ASR=100.0%
+Epoch-8: Loss=-77.115, L_trigger=-125.445, L_pert=241.648, ASR=100.0%
+Epoch-9: Loss=-77.904, L_trigger=-125.921, L_pert=240.081, ASR=100.0%
+Epoch-10: Loss=-78.576, L_trigger=-126.403, L_pert=239.132, ASR=100.0%
+Epoch-11: Loss=-79.086, L_trigger=-126.697, L_pert=238.052, ASR=100.0%
+Epoch-12: Loss=-79.459, L_trigger=-126.996, L_pert=237.685, ASR=100.0%
+Epoch-13: Loss=-79.884, L_trigger=-127.261, L_pert=236.882, ASR=100.0%
+Epoch-14: Loss=-80.197, L_trigger=-127.421, L_pert=236.119, ASR=100.0%
+Epoch-15: Loss=-80.455, L_trigger=-127.645, L_pert=235.952, ASR=100.0%
+Epoch-16: Loss=-80.708, L_trigger=-127.806, L_pert=235.492, ASR=100.0%
+Epoch-17: Loss=-80.886, L_trigger=-127.949, L_pert=235.318, ASR=100.0%
+Epoch-18: Loss=-81.091, L_trigger=-128.1, L_pert=235.044, ASR=100.0%
+Epoch-19: Loss=-81.197, L_trigger=-128.207, L_pert=235.052, ASR=100.0%
+Epoch-20: Loss=-81.321, L_trigger=-128.333, L_pert=235.062, ASR=100.0%
+Epoch-21: Loss=-81.469, L_trigger=-128.426, L_pert=234.782, ASR=100.0%
+Epoch-22: Loss=-81.598, L_trigger=-128.49, L_pert=234.462, ASR=100.0%
+Epoch-23: Loss=-81.688, L_trigger=-128.541, L_pert=234.268, ASR=100.0%
+Epoch-24: Loss=-81.81, L_trigger=-128.649, L_pert=234.196, ASR=100.0%
+Epoch-25: Loss=-81.834, L_trigger=-128.679, L_pert=234.227, ASR=100.0%
+Epoch-26: Loss=-81.899, L_trigger=-128.728, L_pert=234.143, ASR=100.0%
+Epoch-27: Loss=-81.916, L_trigger=-128.756, L_pert=234.202, ASR=100.0%
+Epoch-28: Loss=-82.035, L_trigger=-128.808, L_pert=233.863, ASR=100.0%
+Epoch-29: Loss=-82.135, L_trigger=-128.842, L_pert=233.537, ASR=100.0%
 Before Cleanse. Clean Acc:96.56%, ASR:99.13%
-Epoch-0. Clean Acc:85.44%, ASR:0.0%
-Epoch-1. Clean Acc:92.95%, ASR:0.13%
-Epoch-2. Clean Acc:93.28%, ASR:1.27%
-Epoch-3. Clean Acc:94.2%, ASR:0.53%
-Epoch-4. Clean Acc:94.34%, ASR:0.4%
-Epoch-5. Clean Acc:94.65%, ASR:0.33%
-Epoch-6. Clean Acc:94.68%, ASR:0.4%
-Epoch-7. Clean Acc:94.88%, ASR:0.4%
-Epoch-8. Clean Acc:95.11%, ASR:0.33%
-Epoch-9. Clean Acc:95.11%, ASR:0.4%
+Epoch-0. Clean Acc:87.65%, ASR:0.67%
+Epoch-1. Clean Acc:92.3%, ASR:0.0%
+Epoch-2. Clean Acc:93.1%, ASR:0.0%
+Epoch-3. Clean Acc:92.74%, ASR:0.13%
+Epoch-4. Clean Acc:94.03%, ASR:0.13%
+Epoch-5. Clean Acc:94.35%, ASR:0.6%
+Epoch-6. Clean Acc:94.31%, ASR:0.07%
+Epoch-7. Clean Acc:94.47%, ASR:0.13%
+Epoch-8. Clean Acc:94.39%, ASR:0.73%
+Epoch-9. Clean Acc:95.34%, ASR:0.4%
+After Cleanse. Clean Acc:95.34%, ASR:0.4%, Backdoor(Watermark) Removal Rate:98.73%.
