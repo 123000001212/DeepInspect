@@ -25,4 +25,6 @@ Remember to put trained backdoor models to "backdoor_models/" before running.
 python main.py -dataset=mnist 
 python main.py -dataset=gtsrb -clean_budget=5000
 ```
+## Results
 
+Example of results are presented at mnist-badnet.log and gtsrb-badnet.log.
